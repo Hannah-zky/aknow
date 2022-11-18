@@ -9,7 +9,7 @@
     <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <!-- Title  -->
-    <title>Amado - Furniture Ecommerce Template | Home</title>
+    <title>A KNOW</title>
 
     <!-- Favicon  -->
     <link rel="icon" href="img/core-img/favicon.ico">
@@ -17,6 +17,7 @@
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="css/core-style.css">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/my-style.css">
 
 </head>
 
@@ -64,8 +65,18 @@
             </div>
             <!-- Logo -->
             <div class="logo">
-                <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+                <%= link_to image_tag("/img/core-img/logo.png", class:"aknow-icon"), "/" %>
             </div>
+            <div class="profile">
+                <div class="card card-testimonial bg-light">
+                    <div class="card-body d-flex flex-row align-items-center pb-3">
+                        <img src="img/core-img/default_icon.png" class="img-avatar rounded-circle" alt="Avatar image" width="50" height="50">
+                        <div class="d-flex flex-column">
+                            <span class="person small ml-2"><strong>Jonh Doe</strong></span>
+                        </div>
+                    </div>
+                </div>
+            
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
