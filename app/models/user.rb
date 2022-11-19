@@ -4,6 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :height
+  belongs_to :figure
+  belongs_to :sex
+  belongs_to :age
+  belongs_to :style
+       
   with_options presence: true do
     validates :name
     validates :user_name, uniqueness: true

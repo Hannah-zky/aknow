@@ -11,6 +11,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[6.0]
       t.integer :height_id
       t.integer :figure_id
       t.integer :sex_id
+      t.integer :age_id
       t.integer :style_id
       t.text    :bio
 
