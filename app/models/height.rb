@@ -6,7 +6,7 @@ class Height < ActiveHash::Base
     { id: 4, name: '161cm〜170cm' },
     { id: 5, name: '171cm〜180cm' },
     { id: 6, name: '181cm〜190cm' },
-    { id: 7, name: '191cm以上' },
+    { id: 7, name: '191cm以上' }
   ]
 
   include ActiveHash::Associations

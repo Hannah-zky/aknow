@@ -4,7 +4,7 @@ class Style < ActiveHash::Base
     { id: 2, name: 'カジュアル' },
     { id: 3, name: 'きれいめ' },
     { id: 4, name: 'シンプル' },
-    { id: 5, name: 'その他' },
+    { id: 5, name: 'その他' }
   ]
 
   include ActiveHash::Associations

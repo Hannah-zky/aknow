@@ -3,7 +3,7 @@ class Sex < ActiveHash::Base
     { id: 1, name: '選択(任意)' },
     { id: 2, name: '男性' },
     { id: 3, name: '女性' },
-    { id: 4, name: 'その他' },
+    { id: 4, name: 'その他' }
   ]
 
   include ActiveHash::Associations
