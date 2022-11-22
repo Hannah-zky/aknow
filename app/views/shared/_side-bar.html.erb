@@ -1,0 +1,67 @@
+<!-- Mobile Nav (max width 767px)-->
+<div class="mobile-nav">
+    <!-- Navbar Brand -->
+    <div class="amado-navbar-brand">
+        <a href="index.html"><img src="img/core-img/logo.png" alt=""></a>
+    </div>
+    <!-- Navbar Toggler -->
+    <div class="amado-navbar-toggler">
+        <span></span><span></span><span></span>
+    </div>
+</div>
+
+<!-- Header Area Start -->
+<header class="header-area clearfix">
+    <!-- Close Icon -->
+    <div class="nav-close">
+        <i class="fa fa-close" aria-hidden="true"></i>
+    </div>
+    <!-- Logo -->
+    <div class="logo">
+        <%= link_to image_tag("/img/core-img/logo.png", class:"aknow-icon"), "/" %>
+    </div>
+    <% if user_signed_in? %>
+    <div class="profile">
+        <div class="card card-testimonial bg-light">
+            <div class="card-body d-flex flex-row align-items-center pb-3">
+                <img src="img/core-img/default_icon.png" class="img-avatar rounded-circle" alt="Avatar image" width="50" height="50">
+                <div class="d-flex flex-column">
+                    <span class="person small ml-2"><strong>Jonh Doe</strong></span>
+                </div>
+            </div>
+        </div>
+     </div>
+     <% end %>
+    <!-- Amado Nav -->
+    <nav class="amado-nav">
+        <ul>
+            <li class="active"><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="product-details.html">Product</a></li>
+            <% if user_signed_in? %>
+            <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+            <% else %>
+            <li><%= link_to '新規会員登録', new_user_registration_path, class: "sign-up" %></li>
+            <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+            <% end %>
+        </ul>
+    </nav>
+    <!-- Button Group -->
+    <div class="amado-btn-group mt-30 mb-100">
+        <a href="#" class="btn amado-btn mb-15 ">Aknowする！</a>
+    </div>
+    <!-- Cart Menu -->
+    <div class="cart-fav-search mb-100">
+        <a href="cart.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
+        <a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Favourite</a>
+        <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a>
+    </div>
+    <!-- Social Button -->
+    <div class="social-info d-flex justify-content-between">
+        <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+    </div>
+</header>
+<!-- Header Area End -->
