@@ -1,6 +1,6 @@
 class Figure < ActiveHash::Base
   self.data = [
-    { id: 1, name: '---' },
+    { id: 1, name: '選択(任意)' },
     { id: 2, name: '細め' },
     { id: 3, name: '普通' },
     { id: 4, name: 'ふくよか' },

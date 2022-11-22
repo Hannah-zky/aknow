@@ -72,14 +72,17 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="shop.html">Shop</a></li>
                     <li><a href="product-details.html">Product</a></li>
-                    <li><a href="cart.html">Cart</a></li>
-                    <li class="active"><a href="checkout.html">Checkout</a></li>
+                    <% if user_signed_in? %>
+                    <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
+                    <% else %>
+                    <li><%= link_to '新規会員登録', new_user_registration_path, class: "sign-up" %></li>
+                    <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>
+                    <% end %>
                 </ul>
             </nav>
             <!-- Button Group -->
             <div class="amado-btn-group mt-30 mb-100">
-                <a href="#" class="btn amado-btn mb-15">%Discount%</a>
-                <a href="#" class="btn amado-btn active">New this week</a>
+                <a href="#" class="btn amado-btn mb-15 ">Aknowする！</a>
             </div>
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
@@ -107,58 +110,67 @@
                                 <h2>新規会員登録</h2>
                             </div>
 
-                            <form action="#" method="post">
-                                <div class="row">
-                                    <div class="col-md-12 mb-3">
-                                    <label for="name">　名前</label>
-                                    <span class="indispensable badge badge-danger">必須</span>
-                                        <input type="text" class="form-control" id="name" value="" placeholder="例：aknowはなこ" required>
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                    <label class="form-label" for="name">　ユーザーID</label>
-                                    <span class="indispensable badge badge-danger">必須</span>
-                                        <input type="text" class="form-control" id="user-name" placeholder="例：aknowhanako　半角英数字のみ" value="">
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                    <label class="form-label" for="email">　メールアドレス</label>
-                                    <span class="indispensable badge badge-danger">必須</span>
-                                        <input type="email" class="form-control" id="email" placeholder="メールアドレスを入力してください" value="">
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                    <label class="form-label" for="password">　パスワード</label>
-                                    <span class="indispensable badge badge-danger">必須</span>
-                                        <input type="password" class="form-control" id="password" placeholder="8文字以上・半角英数字を組み合わせてください" value="">
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                    <label class="form-label" for="password">　パスワード(確認)</label>
-                                    <span class="indispensable badge badge-danger">必須</span>
-                                        <input type="password" class="form-control" id="password_confirmation" placeholder="同じパスワードを入力してください" value="">
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                    <label class="form-label" for="password">　身長</label>
-                                        <input type="text" class="form-control" id="height" placeholder="選択(任意)" value="">
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                    <label class="form-label" for="password">　体型</label>
-                                        <input type="text" class="form-control" id="figure" placeholder="選択(任意)" value="">
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                    <label class="form-label" for="password">　性別</label>
-                                        <input type="text" class="form-control" id="sex" placeholder="選択(任意)" value="">
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                    <label class="form-label" for="password">　好きなスタイル</label>
-                                        <input type="text" class="form-control" id="style" placeholder="選択(任意)" value="">
-                                    </div>
-                                    <div class="col-12 mb-3">
-                                    <label class="form-label" for="password">　About Me</label>
-                                        <textarea class="form-control mb-3" id="bio" rows="5"></textarea>
-                                    </div>
-                                    <div class="d-flex align-items-center justify-content-center login-btn mb-50">
-                                        <a href="#" class="btn amado-btn w-50">登録する</a>
-                                    </div>
+                            <%= form_with model: @user, url: user_registration_path, class: 'registration-main', local: true do |f| %>
+                              <div class="col-md-8 offset-md-2 mt-3 mb-3">
+                              <p class="h2 text-danger text-center">
+                                <%= render 'devise/shared/error_messages', model: f.object %>
+                              </p>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-8 offset-md-2 mt-3 mb-3">
+                                <label class="form-label">　名前</label>
+                                <span class="indispensable badge badge-danger">必須</span>
+                                    <%= f.text_field :name, class:"form-control", id:"name", placeholder:"例：aknowはなこ", maxlength:"40" %>
                                 </div>
-                            </form>
+                                <div class="col-md-8 offset-md-2 mt-3 mb-3">
+                                <label class="form-label">　ユーザーID</label>
+                                <span class="indispensable badge badge-danger">必須</span>
+                                    <%= f.text_field :user_name, class:"form-control", id:"user-name", placeholder:"例：aknowhanako　半角英数字のみ" %>
+                                </div>
+                                <div class="col-md-8 offset-md-2 mt-3 mb-3">
+                                <label class="form-label">　メールアドレス</label>
+                                <span class="indispensable badge badge-danger">必須</span>
+                                    <%= f.email_field :email, class:"form-control", id:"email", placeholder:"メールアドレスを入力してください" %>
+                                </div>
+                                <div class="col-md-8 offset-md-2 mt-3 mb-3">
+                                <label class="form-label">　パスワード</label>
+                                <span class="indispensable badge badge-danger">必須</span>
+                                    <%= f.password_field :password, class:"form-control", id:"password", placeholder:"8文字以上・半角英数字を組み合わせてください" %>
+                                </div>
+                                <div class="col-md-8 offset-md-2 mt-3 mb-3">
+                                <label class="form-label">　パスワード(確認)</label>
+                                <span class="indispensable badge badge-danger">必須</span>
+                                    <%= f.password_field :password_confirmation, class:"form-control", id:"password_confirmation", placeholder:"同じパスワードを入力してください" %>
+                                </div>
+                                <div class="col-md-8 offset-md-2 mt-3 mb-3">
+                                <label class="form-label">　身長</label>
+                                    <%= f.collection_select(:height_id, Height.all, :id, :name, {}, {class:"select-box w-100", id:"user-height"}) %>
+                                </div>
+                                <div class="col-md-8 offset-md-2 mt-3 mb-3">
+                                <label class="form-label">　体型</label>
+                                    <%= f.collection_select(:figure_id, Figure.all, :id, :name, {}, {class:"select-box w-100", id:"user-figure"}) %>
+                                </div>
+                                <div class="col-md-8 offset-md-2 mt-3 mb-3">
+                                <label class="form-label">　性別</label>
+                                    <%= f.collection_select(:sex_id, Sex.all, :id, :name, {}, {class:"select-box w-100", id:"user-sex"}) %>
+                                </div>
+                                <div class="col-md-8 offset-md-2 mt-3 mb-3">
+                                <label class="form-label">　年齢</label>
+                                    <%= f.collection_select(:age_id, Age.all, :id, :name, {}, {class:"select-box w-100", id:"user-age"}) %>
+                                </div>
+                                <div class="col-md-8 offset-md-2 mt-3 mb-3">
+                                <label class="form-label">　好きなスタイル</label>
+                                    <%= f.collection_select(:style_id, Style.all, :id, :name, {}, {class:"select-box w-100", id:"user-style"}) %>
+                                </div>
+                                <div class="col-md-8 offset-md-2 mt-3 mb-3">
+                                <label class="form-label">　About Me</label>
+                                    <%= f.text_area :bio, class:"form-control mb-3", id:"bio", placeholder:"プロフィール・自己紹介など" ,rows:"5" ,maxlength:"1000" %>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center login-btn mb-50">
+                                    <%= f.submit "登録する" ,class:"btn amado-btn w-50" %>
+                                </div>
+                              </div>
+                            <% end %>
                         </div>
                     </div>
                 </div>
@@ -166,31 +178,6 @@
         </div>
     </div>
     <!-- ##### Main Content Wrapper End ##### -->
-
-    <!-- ##### Newsletter Area Start ##### -->
-    <section class="newsletter-area section-padding-100-0">
-        <div class="container">
-            <div class="row align-items-center">
-                <!-- Newsletter Text -->
-                <div class="col-12 col-lg-6 col-xl-7">
-                    <div class="newsletter-text mb-100">
-                        <h2>Subscribe for a <span>25% Discount</span></h2>
-                        <p>Nulla ac convallis lorem, eget euismod nisl. Donec in libero sit amet mi vulputate consectetur. Donec auctor interdum purus, ac finibus massa bibendum nec.</p>
-                    </div>
-                </div>
-                <!-- Newsletter Form -->
-                <div class="col-12 col-lg-6 col-xl-5">
-                    <div class="newsletter-form mb-100">
-                        <form action="#" method="post">
-                            <input type="email" name="email" class="nl-email" placeholder="Your E-mail">
-                            <input type="submit" value="Subscribe">
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- ##### Newsletter Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
     <footer class="footer_area clearfix">
