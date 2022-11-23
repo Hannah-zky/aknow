@@ -5,3 +5,7 @@ ja:
         name: 名前
         user_name: ユーザーID
         email: メールアドレス
+      item:
+        image: 画像
+        category_id: カテゴリー
+        explanation: アイテム説明
