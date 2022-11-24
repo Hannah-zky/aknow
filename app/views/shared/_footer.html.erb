@@ -25,20 +25,23 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                             <div class="collapse navbar-collapse" id="footerNavContent">
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item active">
-                                        <a class="nav-link" href="index.html">Home</a>
+                                        <%= link_to 'TOP', root_path, class: "nav-link" %>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="shop.html">Shop</a>
+                                        <a class="nav-link" href="shop.html">カテゴリー</a>
+                                    </li>
+                                    <% if user_signed_in? %>                                    
+                                    <li class="nav-item">
+                                        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>
+                                    </li>
+                                    <% else %>
+                                    <li class="nav-item">
+                                        <%= link_to '新規会員登録', new_user_registration_path, class: "nav-link" %>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="product-details.html">Product</a>
+                                        <%= link_to 'ログイン', new_user_session_path, class: "nav-link" %>
                                     </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="cart.html">Cart</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="checkout.html">Checkout</a>
-                                    </li>
+                                    <% end %>
                                 </ul>
                             </div>
                         </nav>

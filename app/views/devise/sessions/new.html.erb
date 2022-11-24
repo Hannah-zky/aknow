@@ -12,7 +12,7 @@
     <title>A NKOW | </title>
 
     <!-- Favicon  -->
-    <link rel="icon" href="/img/core-img/favicon.ico">
+    <link rel="icon" href="img/core-img/favicon.ico">
 
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="/css/core-style.css">
@@ -65,14 +65,25 @@
             </div>
             <!-- Logo -->
             <div class="logo">
-                <a href="index.html"><img src="/img/core-img/logo.png" alt=""></a>
+                <%= link_to image_tag("/img/core-img/logo.png", class:"aknow-icon"), "/" %>
             </div>
+            <% if user_signed_in? %>
+            <div class="profile">
+                <div class="card card-testimonial bg-light">
+                    <div class="card-body d-flex flex-row align-items-center pb-3">
+                        <img src="/img/core-img/default_icon.png" class="img-avatar rounded-circle" alt="Avatar image" width="50" height="50">
+                        <div class="d-flex flex-column">
+                            <span class="person small ml-2"><strong><%= link_to current_user.name, "#", class: "user-name" %></strong></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% end %>
             <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">Shop</a></li>
-                    <li><a href="product-details.html">Product</a></li>
+                    <li class="active"><%= link_to 'TOP', root_path, class: "top-page" %></li>
+                    <li><a href="shop.html">カテゴリー</a></li>
                     <% if user_signed_in? %>
                     <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
                     <% else %>
@@ -83,20 +94,12 @@
             </nav>
             <!-- Button Group -->
             <div class="amado-btn-group mt-30 mb-100">
-                <a href="#" class="btn amado-btn mb-15 ">Aknowする！</a>
+                <%=link_to 'A KNOW', new_item_path, class:"btn amado-btn mb-15" %>
             </div>
             <!-- Cart Menu -->
             <div class="cart-fav-search mb-100">
-                <a href="cart.html" class="cart-nav"><img src="/img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
-                <a href="#" class="fav-nav"><img src="/img/core-img/favorites.png" alt=""> Favourite</a>
+                <a href="#" class="fav-nav"><img src="/img/core-img/favorites.png" alt=""> Bookmark</a>
                 <a href="#" class="search-nav"><img src="/img/core-img/search.png" alt=""> Search</a>
-            </div>
-            <!-- Social Button -->
-            <div class="social-info d-flex justify-content-between">
-                <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
             </div>
         </header>
         <!-- Header Area End -->
@@ -180,20 +183,23 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                                 <div class="collapse navbar-collapse" id="footerNavContent">
                                     <ul class="navbar-nav ml-auto">
                                         <li class="nav-item active">
-                                            <a class="nav-link" href="index.html">Home</a>
+                                            <%= link_to 'TOP', root_path, class: "nav-link" %>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="shop.html">Shop</a>
+                                            <a class="nav-link" href="shop.html">カテゴリー</a>
+                                        </li>
+                                        <% if user_signed_in? %>                                    
+                                        <li class="nav-item">
+                                            <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>
+                                        </li>
+                                        <% else %>
+                                        <li class="nav-item">
+                                            <%= link_to '新規会員登録', new_user_registration_path, class: "nav-link" %>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="product-details.html">Product</a>
+                                            <%= link_to 'ログイン', new_user_session_path, class: "nav-link" %>
                                         </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="cart.html">Cart</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="checkout.html">Checkout</a>
-                                        </li>
+                                        <% end %>
                                     </ul>
                                 </div>
                             </nav>

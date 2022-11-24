@@ -26,7 +26,7 @@
             <div class="card-body d-flex flex-row align-items-center pb-3">
                 <img src="img/core-img/default_icon.png" class="img-avatar rounded-circle" alt="Avatar image" width="50" height="50">
                 <div class="d-flex flex-column">
-                    <span class="person small ml-2"><strong>Jonh Doe</strong></span>
+                    <span class="person small ml-2"><strong><%= link_to current_user.name, "#", class: "user-name" %></strong></span>
                 </div>
             </div>
         </div>
@@ -35,9 +35,8 @@
     <!-- Amado Nav -->
     <nav class="amado-nav">
         <ul>
-            <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="product-details.html">Product</a></li>
+            <li class="active"><%= link_to 'TOP', root_path, class: "top-page" %></li>
+            <li><a href="shop.html">カテゴリー</a></li>
             <% if user_signed_in? %>
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
             <% else %>
@@ -48,20 +47,12 @@
     </nav>
     <!-- Button Group -->
     <div class="amado-btn-group mt-30 mb-100">
-        <a href="#" class="btn amado-btn mb-15 ">Aknowする！</a>
+        <%=link_to 'A KNOW', new_item_path, class:"btn amado-btn mb-15" %>
     </div>
     <!-- Cart Menu -->
     <div class="cart-fav-search mb-100">
-        <a href="cart.html" class="cart-nav"><img src="img/core-img/cart.png" alt=""> Cart <span>(0)</span></a>
-        <a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Favourite</a>
+        <a href="#" class="fav-nav"><img src="img/core-img/favorites.png" alt=""> Bookmark</a>
         <a href="#" class="search-nav"><img src="img/core-img/search.png" alt=""> Search</a>
-    </div>
-    <!-- Social Button -->
-    <div class="social-info d-flex justify-content-between">
-        <a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a>
-        <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
     </div>
 </header>
 <!-- Header Area End -->
