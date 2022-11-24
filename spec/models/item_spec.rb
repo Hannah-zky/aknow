@@ -16,22 +16,22 @@ RSpec.describe Item, type: :model do
       it 'imageが空では出品できない' do
         @item.image = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("画像を入力してください")
+        expect(@item.errors.full_messages).to include('画像を入力してください')
       end
       it 'category_idが1以外では出品できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("カテゴリーを選択してください")
+        expect(@item.errors.full_messages).to include('カテゴリーを選択してください')
       end
       it 'explanationが空では出品できない' do
         @item.explanation = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("アイテム説明を入力してください")
+        expect(@item.errors.full_messages).to include('アイテム説明を入力してください')
       end
       it 'userが紐付いていなければ出品できない' do
         @item.user = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Userを入力してください")
+        expect(@item.errors.full_messages).to include('Userを入力してください')
       end
     end
   end

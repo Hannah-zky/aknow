@@ -8,7 +8,7 @@ class Category < ActiveHash::Base
     { id: 6, name: 'オールインワン' },
     { id: 7, name: 'ワンピース' },
     { id: 8, name: 'スーツ' },
-    { id: 9, name: 'その他' },
+    { id: 9, name: 'その他' }
   ]
 
   include ActiveHash::Associations

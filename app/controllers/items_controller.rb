@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
 
   def index
-    @items = Item.order("RAND()").limit(10)
+    @items = Item.order('RAND()').limit(10)
   end
 
   def new
@@ -21,7 +21,6 @@ class ItemsController < ApplicationController
   private
 
   def item_params
-    params.require(:item).permit(:image, :category_id, :explanation,).merge(user_id: current_user.id)
+    params.require(:item).permit(:image, :category_id, :explanation).merge(user_id: current_user.id)
   end
-
 end
