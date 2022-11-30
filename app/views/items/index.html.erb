@@ -33,14 +33,14 @@
             <% @items.each do |item| %>
                 <!-- Single Catagory -->
                 <div class="single-products-catagory clearfix">
-                    <%#= link_to item_path(item.id) do %>
-                    <%= image_tag item.image.variant(resize: '500<'), class: "item-img" if item.image.attached? %>
-                        <!-- Hover Content -->
-                        <div class="hover-content">
-                            <div class="line"></div>
-                            <p><%= item.user.name %></p>
-                        </div>
-                    <%# end %>
+                    <%= link_to item_path(item.id) do %>
+                        <%= image_tag item.image.variant(resize: '500<'), class: "item-img" if item.image.attached? %>
+                            <!-- Hover Content -->
+                            <div class="hover-content">
+                                <div class="line"></div>
+                                <p><%= item.user.name %></p>
+                            </div>
+                    <% end %>
                 </div>
             <% end %>
         </div>
