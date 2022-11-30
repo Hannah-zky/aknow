@@ -17,7 +17,6 @@
     <!-- Core Style CSS -->
     <link rel="stylesheet" href="/css/core-style.css">
     <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/css/bootstrap-social.css">
 
 </head>
 
@@ -104,55 +103,54 @@
         </header>
         <!-- Header Area End -->
 
-        <div class="cart-table-area section-padding-100">
+        <!-- Product Details Area Start -->
+        <div class="single-product-area section-padding-100 clearfix">
             <div class="container-fluid">
+
                 <div class="row">
-                    <div class="col-12 col-lg-8">
-                        <div class="checkout_details_area mt-50 clearfix">
+                    <div class="col-12">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb mt-50">
+                                <li class="breadcrumb-item"><%= link_to 'TOP', root_path, class: "top-page" %></li>
+                                <li class="breadcrumb-item"><%= @item.category.name %></li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
 
-                            <div class="title-login text-center">
-                                <h2>ログイン</h2>
+                <div class="row">
+                    <div class="col-12 col-lg-7">
+                        <div class="single_product_thumb">
+                            <%= image_tag @item.image, class: "d-block w-100" %>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-5">
+                        <div class="single_product_desc">
+                            <!-- Product Meta Data -->
+                            <div class="product-meta-data">
+                                <div class="line"></div>
+                                <p class="product-price"><%= l @item.created_at %></p>
+                                <a href="product-details.html">
+                                    <h6><%= @item.user.name %></h6>
+                                </a>
                             </div>
-
-                            <%= form_with model: @user, url: user_session_path, class: 'registration-main', local: true do |f| %>
-                              <div class="col-md-8 offset-md-2 mt-3 mb-3">
-                                <div class='login-flash-message'>
-                                <p class="text-danger text-center">
-                                <%= flash[:notice] %>
-                                <%= flash[:alert] %>
-                                </p>
-                                </div>
-                              </div>
-                              <div class="row">
-                                  <div class="col-md-8 offset-md-2 mt-3 mb-3">
-                                      <%= f.email_field :email, class:"form-control", id:"email", placeholder:"メールアドレスを入力してください", autofocus: true %>
-                                  </div>
-                                  <div class="col-md-8 offset-md-2 mb-3">
-                                      <%= f.password_field :password, class:"form-control mb-3", id:"password", placeholder:"パスワードを入力してください" %>
-                                  </div>
-                                  <div class="d-flex align-items-center justify-content-center login-btn mb-50">
-                                      <%= f.submit "ログイン", class:"btn amado-btn w-50" %>
-                                  </div>
-                              </div>
-                            <% end %>
-
-                            <div class="title-login-sns text-center">
-                                <h3>SNSアカウントでログイン</h3>
+                            <!-- Explanation -->
+                            <div class="short_overview my-5">
+                                <p><%= @item.explanation %></p>
                             </div>
-
-                            <form action="#" method="post">
-                                <div class="row">
-                                    <a class="btn btn-block btn-social btn-twitter text-white col-md-8 offset-md-2 mt-3 mb-3">
-                                    <span class="fa fa-twitter"></span> Twitterでログイン
-                                    </a>
-                                </div>
-                            </form>
-                            
+                            <div class="cart clearfix cart-btn d-flex w-100">
+                                <% if user_signed_in? && current_user.id == @item.user_id %>
+                                    <%= link_to "編集／削除", "#", class:"btn amado-btn" %>
+                                <% else %>
+                                    <%= link_to "ANSWER", "#", class:"btn amado-btn" %>
+                                <% end %>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- Product Details Area End -->
     </div>
     <!-- ##### Main Content Wrapper End ##### -->
 
