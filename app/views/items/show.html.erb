@@ -139,10 +139,12 @@
                                 <p><%= @item.explanation %></p>
                             </div>
                             <div class="cart clearfix cart-btn d-flex w-100">
-                                <% if user_signed_in? && current_user.id == @item.user_id %>
-                                    <%= link_to "編集／削除", "#", class:"btn amado-btn" %>
-                                <% else %>
-                                    <%= link_to "ANSWER", "#", class:"btn amado-btn" %>
+                                <% if user_signed_in? %>
+                                    <% if current_user.id == @item.user_id %>
+                                        <%= link_to "編集／削除", "#", class:"btn amado-btn" %>
+                                    <% else %>
+                                        <%= link_to "ANSWER", "#", class:"btn amado-btn" %>
+                                    <% end %>
                                 <% end %>
                             </div>
                         </div>
