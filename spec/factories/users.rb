@@ -7,7 +7,7 @@ FactoryBot.define do
     name                   { Gimei.name }
     user_name              { Faker::Lorem.characters(number: 10) }
     email                  { Faker::Internet.free_email }
-    password               { '1a' + Faker::Internet.password(min_length: 8) }
+    password               { "1a#{Faker::Internet.password(min_length: 8)}" }
     password_confirmation  { password }
     height_id              { Faker::Number.between(from: 1, to: 7) }
     figure_id              { Faker::Number.between(from: 1, to: 5) }

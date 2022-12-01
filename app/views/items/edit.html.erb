@@ -132,7 +132,7 @@
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center login-btn mb-50">
                                         <%= f.submit "編集する" ,class:"btn amado-btn mr-50" %>
-                                        <%= f.submit "削除" ,class:"btn amado-btn active" %>
+                                        <%= link_to "削除", item_path(@item.id), method: :delete, class:"btn amado-btn active" %>
                                     </div>
                                     <div class="d-flex align-items-center justify-content-center login-btn mb-50">
                                         <%=link_to 'キャンセル', item_path(@item.id), class:"btn amado-btn w-50" %>
