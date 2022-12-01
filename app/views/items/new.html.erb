@@ -81,7 +81,7 @@
             <nav class="amado-nav">
                 <ul>
                     <li class="active"><%= link_to 'TOP', root_path, class: "top-page" %></li>
-                    <li><a href="shop.html">カテゴリー</a></li>
+                    <!--<li><a href="shop.html">カテゴリー</a></li>-->
                     <% if user_signed_in? %>
                     <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
                     <% else %>
@@ -172,9 +172,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                                         <li class="nav-item active">
                                             <%= link_to 'TOP', root_path, class: "nav-link" %>
                                         </li>
-                                        <li class="nav-item">
+                                        <!--<li class="nav-item">
                                             <a class="nav-link" href="shop.html">カテゴリー</a>
-                                        </li>
+                                        </li>-->
                                         <% if user_signed_in? %>                                    
                                         <li class="nav-item">
                                             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "nav-link" %>

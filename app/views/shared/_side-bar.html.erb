@@ -36,7 +36,7 @@
     <nav class="amado-nav">
         <ul>
             <li class="active"><%= link_to 'TOP', root_path, class: "top-page" %></li>
-            <li><a href="shop.html">カテゴリー</a></li>
+            <!--<li><a href="shop.html">カテゴリー</a></li>-->
             <% if user_signed_in? %>
             <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
             <% else %>
