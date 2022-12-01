@@ -78,7 +78,6 @@
                 </div>
             </div>
             <% end %>
-            <!-- Amado Nav -->
             <nav class="amado-nav">
                 <ul>
                     <li class="active"><%= link_to 'TOP', root_path, class: "top-page" %></li>
@@ -103,56 +102,48 @@
         </header>
         <!-- Header Area End -->
 
-        <!-- Product Details Area Start -->
-        <div class="single-product-area section-padding-100 clearfix">
+        <div class="cart-table-area section-padding-100">
             <div class="container-fluid">
-
                 <div class="row">
-                    <div class="col-12">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb mt-50">
-                                <li class="breadcrumb-item"><%= link_to 'TOP', root_path, class: "top-page" %></li>
-                                <li class="breadcrumb-item"><%= @item.category.name %></li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
+                    <div class="col-12 col-lg-8">
+                        <div class="checkout_details_area mt-50 clearfix">
 
-                <div class="row">
-                    <div class="col-12 col-lg-7">
-                        <div class="single_product_thumb">
-                            <%= image_tag @item.image, class: "d-block w-100" %>
-                        </div>
-                    </div>
-                    <div class="col-12 col-lg-5">
-                        <div class="single_product_desc">
-                            <!-- Product Meta Data -->
-                            <div class="product-meta-data">
-                                <div class="line"></div>
-                                <p class="product-price"><%= l @item.created_at %></p>
-                                <a href="product-details.html">
-                                    <h6><%= @item.user.name %></h6>
-                                </a>
+                            <div class="cart-title text-center">
+                                <h2>投稿編集</h2>
                             </div>
-                            <!-- Explanation -->
-                            <div class="short_overview my-5">
-                                <p><%= @item.explanation %></p>
-                            </div>
-                            <div class="cart clearfix cart-btn d-flex w-100">
-                                <% if user_signed_in? %>
-                                    <% if current_user.id == @item.user_id %>
-                                        <%= link_to "編集／削除", edit_item_path(@item.id), method: :get, class:"btn amado-btn" %>
-                                    <% else %>
-                                        <%= link_to "ANSWER", "#", class:"btn amado-btn" %>
-                                    <% end %>
-                                <% end %>
-                            </div>
+
+                            <%= form_with model: @item, local: true do |f| %>
+                            <%= render 'shared/error', model: f.object %>
+                                <div class="row">
+                                    <div class="form-group col-md-8 offset-md-2 mt-3 mb-3">
+                                        <label for="exampleFormControlFile1">　画像</label>
+                                        <span class="indispensable badge badge-danger">必須</span>
+                                        <%= f.file_field :image, class:"form-control-file", id:"item-image" %>
+                                    </div>
+                                    <div class="col-md-8 offset-md-2 mt-3 mb-3">
+                                    <label class="form-label">　カテゴリー</label>
+                                    <span class="indispensable badge badge-danger">必須</span>
+                                        <%= f.collection_select(:category_id, Category.all, :id, :name, {}, {class:"select-box w-100", id:"item-category"}) %>
+                                    </div>
+                                    <div class="col-md-8 offset-md-2 mt-3 mb-3">
+                                    <label class="form-label">　アイテム説明</label>
+                                    <span class="indispensable badge badge-danger">必須</span>
+                                        <%= f.text_area :explanation, class:"form-control mb-3", id:"explanation", placeholder:"アイテム説明を入力してください" ,rows:"5" ,maxlength:"1000" %>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center login-btn mb-50">
+                                        <%= f.submit "編集する" ,class:"btn amado-btn mr-50" %>
+                                        <%= f.submit "削除" ,class:"btn amado-btn active" %>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center login-btn mb-50">
+                                        <%=link_to 'キャンセル', item_path(@item.id), class:"btn amado-btn w-50" %>
+                                    </div>
+                                </div>
+                            <% end %>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Product Details Area End -->
     </div>
     <!-- ##### Main Content Wrapper End ##### -->
 
