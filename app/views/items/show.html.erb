@@ -135,7 +135,7 @@
                                 </a>
                             </div>
                             <!-- Explanation -->
-                            <div class="short_overview my-5">
+                            <div class="short_overview my-5 mb-100">
                                 <p><%= @item.explanation %></p>
                             </div>
                             <div class="cart clearfix cart-btn d-flex w-100">
@@ -143,13 +143,20 @@
                                     <% if current_user.id == @item.user_id %>
                                         <%= link_to "編集／削除", edit_item_path(@item.id), method: :get, class:"btn amado-btn" %>
                                     <% else %>
-                                        <%= link_to "ANSWER", "#", class:"btn amado-btn" %>
+                                        <div class="row">
+                                            <%= form_with model: [@item, @comment],local: true do |f| %>
+                                            <%= f.text_area :comment, class:"form-control mb-3 w-100", id:"comment", placeholder:"ANSWERを入力してください" ,rows:"3" ,maxlength:"500" %>
+                                            <%= f.submit "ANSWER", class:"btn amado-btn" %>
+                                            <% end %>
+                                        </div>
                                     <% end %>
                                 <% end %>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="row">
             </div>
         </div>
         <!-- Product Details Area End -->
