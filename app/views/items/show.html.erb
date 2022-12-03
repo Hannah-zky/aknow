@@ -121,7 +121,7 @@
                 <div class="row">
                     <div class="col-12 col-lg-7">
                         <div class="single_product_thumb">
-                            <%= image_tag @item.image, class: "d-block w-100" %>
+                            <%= image_tag @item.image.variant(resize: '500<'), class: "d-block w-100" %>
                         </div>
                     </div>
                     <div class="col-12 col-lg-5">
@@ -157,6 +157,17 @@
                 </div>
             </div>
             <div class="row">
+               <div id="comments">
+                    <div class="mb-4">
+                        <h3>　ANSWER</h3>
+                    </div>
+                    <% @item.comments.each do |comment| %>
+                    <div class="comment mb-4">
+                        <p class="user-info"><h6>　<%= comment.user.name %></h6></p>
+                        <p>　<%= comment.comment%></p>
+                    </div>
+                    <% end %>
+                </div>
             </div>
         </div>
         <!-- Product Details Area End -->
