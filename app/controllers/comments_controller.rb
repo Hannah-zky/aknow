@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     else
       @item = @comment.item
       @comments = @item.comments
-      render "items/show"
+      render 'items/show'
     end
   end
 
@@ -17,5 +17,4 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:comment).merge(user_id: current_user.id, item_id: params[:item_id])
   end
-
 end
