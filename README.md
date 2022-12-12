@@ -50,7 +50,7 @@ A KNOW
 * 「前に買った服を今っぽく着るために合わせる洋服を教えてほしい」など
 
 ## 洗い出した要件
-https://docs.google.com/spreadsheets/d/15myiNs1CLnqbPpRpNhKmTAScNEte400-Jkex3icJKjs/edit?usp=sharing
+[要件定義シート](https://docs.google.com/spreadsheets/d/15myiNs1CLnqbPpRpNhKmTAScNEte400-Jkex3icJKjs/edit?usp=sharing)
 # 機能一覧
 * ユーザー登録機能
 [![Image from Gyazo](https://i.gyazo.com/d9592a349c56118bc63125a57087984d.gif)](https://gyazo.com/d9592a349c56118bc63125a57087984d)
